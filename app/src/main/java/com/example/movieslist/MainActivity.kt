@@ -14,12 +14,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         GlobalScope.launch(Dispatchers.Main) {
             val response  = withContext(Dispatchers.IO){
                 Client.api.getPopularMovies()
             }
-            Log.d("Response","$response")
+            if(response.isSuccessful){
+                Log.d("Response","$response")
+            }
         }
     }
 }

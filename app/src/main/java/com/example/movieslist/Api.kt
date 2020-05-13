@@ -11,7 +11,7 @@ interface Api {
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String = "7efdcf98fe3a83159c29307ef7784db1",
         @Query("page") page: Int = 1
-    ): Response<GetMoviesResponse>
+    ): Response<List<GetMoviesResponse>>
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(
