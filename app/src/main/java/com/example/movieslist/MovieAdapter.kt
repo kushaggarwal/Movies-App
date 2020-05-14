@@ -1,5 +1,6 @@
 package com.example.movieslist
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
     private var data : List<Movie> =ArrayList()
+    private var new_data : List<GetMoviesResponse> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false)
@@ -21,9 +23,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
         holder.bind(data[position])
     }
 
-    fun swapData(data: List<Movie>) {
-        this.data = data
-        notifyDataSetChanged()
+    fun swapData(new_data: List<GetMoviesResponse>) {
+    Log.d("Response","$new_data")
+//        this.data = new_data.movies
+        //notifyDataSetChanged()
     }
 
     class MovieViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {

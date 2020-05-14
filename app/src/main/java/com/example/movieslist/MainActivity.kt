@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 val responseBody = response.body()
                 Log.d("Response","$responseBody")
-                response.body()?.let { adapter.swapData(responseBody.movies) }
+                response.body()?.let {
+                    it
+                }
 
             }
         }
