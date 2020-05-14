@@ -11,14 +11,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Client {
 
-        val gson = GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
+    val gson = GsonBuilder()
+        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+        .create()
 
-        val api = retrofit.create(Api::class.java)
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.themoviedb.org/3/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val api = retrofit.create(Api::class.java)
 
 
 
