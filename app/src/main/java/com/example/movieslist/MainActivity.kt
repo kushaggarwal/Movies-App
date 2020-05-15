@@ -13,7 +13,9 @@ import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
-    private val adapter = MovieAdapter()
+    val list : ArrayList<Movie> = arrayListOf<Movie>()
+
+    private val adapter = MovieAdapter(list)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +33,13 @@ class MainActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 val responseBody = response.body()
                 Log.d("Response","$responseBody")
-                response.body()?.let {
-                    it
+                response.body()?.let {res->
+                    res.movies.let{
+                        list.addAll(it)
+                        Log.d("response","$list")
+
+                    }
+                    runOnUiThread { adapter.notifyDataSetChanged() }
                 }
 
             }

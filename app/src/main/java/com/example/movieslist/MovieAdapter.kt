@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
+class MovieAdapter(var data : List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
-    private var data : List<Movie> =ArrayList()
-    private var new_data : List<GetMoviesResponse> = ArrayList()
+//    private var data : List<Movie> =ArrayList()
+//    private var new_data : List<GetMoviesResponse> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false)
@@ -23,11 +23,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
         holder.bind(data[position])
     }
 
-    fun swapData(new_data: List<GetMoviesResponse>) {
-    Log.d("Response","$new_data")
-//        this.data = new_data.movies
-        //notifyDataSetChanged()
-    }
+//    fun swapData(new_data: List<GetMoviesResponse>) {
+//    Log.d("Response","$new_data")
+////        this.data = new_data.movies
+//        //notifyDataSetChanged()
+//    }
 
     class MovieViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
         fun bind(item: Movie) = with(itemView) {
