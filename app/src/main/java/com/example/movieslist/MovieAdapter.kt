@@ -11,6 +11,7 @@ class MovieAdapter(var data : List<Movie>) : RecyclerView.Adapter<MovieAdapter.M
 
 //    private var data : List<Movie> =ArrayList()
 //    private var new_data : List<GetMoviesResponse> = ArrayList()
+    var onItemClick: ((login: String) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false)
@@ -34,6 +35,9 @@ class MovieAdapter(var data : List<Movie>) : RecyclerView.Adapter<MovieAdapter.M
             textView1.text = item.title
             textView2.text = "Description"
             //Picasso.get().load(item.avatarUrl).into(imageView)
+            setOnClickListener {
+                onItemClick?.invoke(item.login!!)
+            }
 
         }
     }
